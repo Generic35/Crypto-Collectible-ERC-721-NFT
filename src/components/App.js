@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
 import Web3 from 'web3';
+import './App.css';
 import Color from '../abis/Color.json';
 
 class App extends Component {
@@ -49,15 +49,6 @@ class App extends Component {
     }
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      account: '',
-      contract: null,
-      totalSupply: 0,
-      colors: [],
-    };
-  }
   mint = (color) => {
     this.state.contract.methods
       .mint(color)
@@ -68,6 +59,16 @@ class App extends Component {
         });
       });
   };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      account: '',
+      contract: null,
+      totalSupply: 0,
+      colors: [],
+    };
+  }
 
   render() {
     return (
@@ -117,20 +118,20 @@ class App extends Component {
                 </form>
               </div>
             </main>
-            <hr />
-            <div className="row text-center">
-              {this.state.colors.map((color, key) => {
-                return (
-                  <div key={key} className="col-md-3 mb-3">
-                    <div
-                      className="token"
-                      style={{ backgroundColor: color }}
-                    ></div>
-                    <div>{color}</div>
-                  </div>
-                );
-              })}
-            </div>
+          </div>
+          <hr />
+          <div className="row text-center">
+            {this.state.colors.map((color, key) => {
+              return (
+                <div key={key} className="col-md-3 mb-3">
+                  <div
+                    className="token"
+                    style={{ backgroundColor: color }}
+                  ></div>
+                  <div>{color}</div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
